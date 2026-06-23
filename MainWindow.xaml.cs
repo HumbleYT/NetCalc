@@ -20,6 +20,7 @@ namespace NetCalc
 
         private string calculate(string s)
         {
+            arr = new string[s.Length];
             string result = "";
             int count = 0;
             for (int i = 0; i < s.Length; i++)
