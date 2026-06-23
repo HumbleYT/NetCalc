@@ -25,7 +25,7 @@ namespace NetCalc
             int count = 0;
             for (int i = 0; i < s.Length; i++)
             {
-                if (int.TryParse(s[i].ToString(), out int n))
+                if (int.TryParse(s[i].ToString(), out int n) || s[i] == '.')
                 {
                     arr[count] = s[i].ToString();
                 }
@@ -91,7 +91,7 @@ namespace NetCalc
 
         private void ACBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            answerBox.Text = "";
         }
 
         private void subBtn_Click(object sender, RoutedEventArgs e)
@@ -182,7 +182,13 @@ namespace NetCalc
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (answerBox.Text.Length > 0)
+            {
+                answerBox.Text = answerBox.Text.Substring(0, answerBox.Text.Length - 1);
+            }else
+            {
+                MessageBox.Show("Nothing to delete!");
+            }
         }
     }
 }
