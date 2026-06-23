@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetCalc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="797" Width="490">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="452*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="answerBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="51" Grid.Row="1" Width="470" FontSize="36" TextAlignment="Right" Margin="0,10,0,0"/>
+        <Button x:Name="deleteBtn" Content="DEL" HorizontalAlignment="Left" Height="123" Margin="0,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Grid.RowSpan="2" FontSize="48"/>
+        <Button x:Name="ACBtn" Content="AC" HorizontalAlignment="Left" Height="123" Margin="122,77,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="123" Click="ACBtn_Click" FontSize="48"/>
+        <Button x:Name="remBtn" Content="REM" HorizontalAlignment="Left" Height="123" Margin="245,77,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="divBtn" Content="Button" HorizontalAlignment="Left" Height="123" Margin="368,77,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="123"/>
+        <Button x:Name="btn7" Content="7" HorizontalAlignment="Left" Height="123" Margin="0,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontSize="48"/>
+        <Button x:Name="btn8" Content="8" HorizontalAlignment="Left" Height="123" Margin="122,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="btn9" Content="9" HorizontalAlignment="Left" Height="123" Margin="245,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="multBtn" Content="X" HorizontalAlignment="Left" Height="123" Margin="368,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="btn4" Content="4" HorizontalAlignment="Left" Height="123" Margin="0,320,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontSize="48"/>
+        <Button x:Name="btn5" Content="5" HorizontalAlignment="Left" Height="123" Margin="122,320,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="btn6" Content="6" HorizontalAlignment="Left" Height="123" Margin="245,320,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="subBtn" Content="-" HorizontalAlignment="Left" Height="123" Margin="368,320,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="90" Click="subBtn_Click"/>
+        <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Height="123" Margin="0,442,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontSize="48"/>
+        <Button x:Name="btn2" Content="2" HorizontalAlignment="Left" Height="123" Margin="122,442,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="btn3" Content="3" HorizontalAlignment="Left" Height="123" Margin="245,442,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="addBtn" Content="+" HorizontalAlignment="Left" Height="123" Margin="368,442,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="90"/>
+        <Button x:Name="modBtn" Content="MOD" HorizontalAlignment="Left" Height="123" Margin="0,565,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" FontSize="48"/>
+        <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Height="123" Margin="122,565,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48"/>
+        <Button x:Name="decBtn" Content="." HorizontalAlignment="Left" Height="123" Margin="245,565,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="90"/>
+        <Button x:Name="eqlBtn" Content="=" HorizontalAlignment="Left" Height="123" Margin="368,565,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="72" Click="eqlBtn_Click"/>
 
     </Grid>
 </Window>

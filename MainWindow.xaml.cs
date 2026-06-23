@@ -20,5 +20,20 @@ namespace NetCalc
         {
             InitializeComponent();
         }
+
+        private void ACBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void subBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void eqlBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
