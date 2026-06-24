@@ -11,7 +11,7 @@
             <RowDefinition Height="45*"/>
             <RowDefinition Height="452*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="answerBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="6/4" VerticalAlignment="Top" Height="51" Grid.Row="1" Width="470" FontSize="36" TextAlignment="Right" Margin="0,10,0,0"/>
+        <TextBlock x:Name="answerBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="51" Grid.Row="1" Width="470" FontSize="36" TextAlignment="Right" Margin="0,10,0,0"/>
         <Button x:Name="deleteBtn" Content="DEL" HorizontalAlignment="Left" Height="123" Margin="0,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Grid.RowSpan="2" FontSize="48" Click="deleteBtn_Click"/>
         <Button x:Name="ACBtn" Content="AC" HorizontalAlignment="Left" Height="123" Margin="122,77,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="123" Click="ACBtn_Click" FontSize="48"/>
         <Button x:Name="remBtn" Content="REM" HorizontalAlignment="Left" Height="123" Margin="245,77,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="123" FontSize="48" Click="remBtn_Click"/>

@@ -25,65 +25,83 @@ namespace NetCalc
             int count = 0;
             for (int i = 0; i < s.Length; i++)
             {
-                if (int.TryParse(s[i].ToString(), out int n) || s[i] == '.')
+                char c = s[i];
+
+                // Check if it's part of a number (digit, decimal, or unary minus)
+                if (char.IsDigit(c) || c == '.' ||
+                    (c == '-' && (i == 0 || "+-*/%~".Contains(s[i - 1]))))
                 {
-                    arr[count] = s[i].ToString();
+                    if (arr[count] == null)
+                        arr[count] = "";
+
+                    arr[count] += c;
                 }
-                else
+                else // operator
                 {
                     count++;
-                    arr[count] = s[i].ToString();
+                    arr[count] = c.ToString();
                     count++;
                 }
             }
-            while (arr.Length > 1)
+
+            arr = arr.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            try
             {
-                for (int i = 0; i < arr.Length; i++)
+                while (arr.Length > 1)
                 {
-                    if (arr[i] == "*")
+                    for (int i = 0; i < arr.Length; i++)
                     {
-                        arr[i - 1] = (Convert.ToDouble(arr[i - 1]) * Convert.ToDouble(arr[i + 1])).ToString();
-                        arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        if (arr[i] == "*")
+                        {
+                            arr[i - 1] = (Convert.ToDouble(arr[i - 1]) * Convert.ToDouble(arr[i + 1])).ToString();
+                            arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        }
+                        else if (arr[i] == "/")
+                        {
+                            arr[i - 1] = (Convert.ToDouble(arr[i - 1]) / Convert.ToDouble(arr[i + 1])).ToString();
+                            arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        }
+                        else if (arr[i] == "~")
+                        {
+                            arr[i - 1] = (Convert.ToDouble(arr[i - 1]) % Convert.ToDouble(arr[i + 1])).ToString();
+                            arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        }
+                        else if (arr[i] == "%")
+                        {
+                            arr[i - 1] = (Convert.ToInt32(arr[i - 1]) / Convert.ToInt32(arr[i + 1])).ToString();
+                            arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        }
                     }
-                    else if (arr[i] == "/")
+
+                    for (int i = 0; i < arr.Length; i++)
                     {
-                        arr[i - 1] = (Convert.ToDouble(arr[i - 1]) / Convert.ToDouble(arr[i + 1])).ToString();
-                        arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
-                    }
-                    else if (arr[i] == "%")
-                    {
-                        arr[i - 1] = (Convert.ToDouble(arr[i - 1]) % Convert.ToDouble(arr[i + 1])).ToString();
-                        arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
-                    }
-                    else if (arr[i] == "~")
-                    {
-                        arr[i - 1] = (Convert.ToInt32(arr[i - 1]) % Convert.ToInt32(arr[i + 1])).ToString();
-                        arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        if (arr[i] == "+")
+                        {
+                            arr[i - 1] = (Convert.ToDouble(arr[i - 1]) + Convert.ToDouble(arr[i + 1])).ToString();
+                            arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        }
+                        else if (arr[i] == "-")
+                        {
+                            arr[i - 1] = (Convert.ToDouble(arr[i - 1]) - Convert.ToDouble(arr[i + 1])).ToString();
+                            arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
+                        }
                     }
                 }
-            
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    if (arr[i] == "+")
-                    {
-                        arr[i - 1] = (Convert.ToDouble(arr[i - 1]) + Convert.ToDouble(arr[i + 1])).ToString();
-                        arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
-                    }
-                    else if (arr[i] == "-")
-                    {
-                        arr[i - 1] = (Convert.ToDouble(arr[i - 1]) - Convert.ToDouble(arr[i + 1])).ToString();
-                        arr = arr.Where((source, index) => index != i && index != i + 1).ToArray();
-                    }
-                }
+
+                result = arr[0];
+                return result;
+            } catch
+            {
+                MessageBox.Show("Invalid input!");
+                return "";
             }
-
-            result = arr[0];
-            return result;
         }
-    
 
 
-        
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();
